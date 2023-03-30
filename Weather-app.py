@@ -10,9 +10,9 @@ def get_weather(city):
     default_url = "https://api.openweathermap.org/data/2.5/weather?"
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
     data = requests.get(url).json()
-    kelvin = data["main"]["temp"]
-    kelvin = kelvin - 273.15
-    temp_fahrenheit = (kelvin * 9//5) + 32
+    temp_kelvin = data["main"]["temp"]
+    temp_kelvin = temp_kelvin - 273.15
+    temp_fahrenheit = (temp_kelvin * 9//5) + 32
     return temp_fahrenheit
 
 def update_temperature():
@@ -26,7 +26,7 @@ city_label.pack()
 city_entry = tk.Entry(root,)
 city_entry.pack()
 
-button = tk.Button(root, text="Update Weather", command=update_temperature)
+button = tk.Button(root, text="Get Weather", command=update_temperature)
 button.pack()
 
 temperature_label = tk.Label(root, text="Temperature: ")
