@@ -40,5 +40,5 @@ button.pack()
 temperature_label = tk.Label(root, text="Temperature: ")
 temperature_label.pack()
 
-# Executes main loop
+# Executes main loop 
 root.mainloop()
