@@ -1,6 +1,6 @@
 # Imports tkinter, requests, and json modules
 import tkinter as tk
-import requests, json
+import requests
 
 # Creates 300x600 window with title
 root = tk.Tk()
