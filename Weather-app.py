@@ -10,7 +10,6 @@ root.geometry("300x600")
 def get_weather(city):
     # A function to get the current weather for a city
     api_key = "6d85d3bf2552548ce1a6d7930c5a3048"
-    default_url = "https://api.openweathermap.org/data/2.5/weather?"
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
     data = requests.get(url).json()
     temp_kelvin = data["main"]["temp"]
