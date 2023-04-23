@@ -48,14 +48,10 @@ def temp_low(city):
 def update_weather():
     # Executes all the functions and updates results
     city = city_entry.get()
-    temperature = get_weather(city)
-    description = weather_desc(city)
-    high = temp_high(city)
-    low = temp_low(city)
-    desc_label.config(text=f"{description}")
-    temp_label.config(text=f"{temperature}°F")
-    high_data_label.config(text=f"{high}°F")
-    low_data_label.config(text=f"{low}°F")
+    desc_label.config(text=f"{weather_desc(city)}")
+    temp_label.config(text=f"{get_weather(city)}°F")
+    high_data_label.config(text=f"{temp_high(city)}°F")
+    low_data_label.config(text=f"{temp_low(city)}°F")
 
 
 city_label = tk.Label(root, text="Enter City:", font=("Arial", 13))
@@ -70,8 +66,8 @@ description_label.place(x=0, y=30)
 desc_label = tk.Label(root, text="", font=("Arial", 13))
 desc_label.place(x=112, y=42, anchor="w")
 
-temperature_label = tk.Label(root, text="Temperature:", font=("Arial", 13))
-temperature_label.place(x=0, y=59)
+temperature_label = tk.Label(
+    root, text="Temperature:", font=("Arial", 13)).place(x=0, y=59)
 
 temp_label = tk.Label(root, text="", font=("Arial", 13))
 temp_label.place(x=140, y=60)
