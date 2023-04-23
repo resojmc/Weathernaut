@@ -6,7 +6,7 @@ import requests
 root = tk.Tk()
 
 # Title and window dimensions
-root.geometry("230x200")
+root.geometry("250x200")
 root.title("Weather")
 
 
