@@ -8,6 +8,7 @@ root = tk.Tk()
 # Title and window dimensions
 root.geometry("250x200")
 root.title("Weather")
+root.resizable(False, False)
 
 
 def get_weather(city):
@@ -76,7 +77,10 @@ city_label = tk.Label(root, text="Enter City:", font=("Arial", 13))
 city_label.place(x=0, y=2)
 
 city_entry = tk.Entry(root, )
-city_entry.place(x=140, y=4.5, width=76.5)
+city_entry.place(x=160, y=4.5, width=76.5)
+
+button = tk.Button(root, text="Get Weather", command=update_weather)
+button.place(x=160, y=160)
 
 description_label = tk.Label(root, text="Current Status:", font=("Arial", 13))
 description_label.place(x=0, y=30)
@@ -113,8 +117,5 @@ country_label.place(x=0, y=160)
 
 country_data_label = tk.Label(root, text="", font=("Arial", 13))
 country_data_label.place(x=100, y=172.5, anchor="e")
-
-button = tk.Button(root, text="Get Weather", command=update_weather)
-button.place(x=140, y=160)
 
 root.mainloop()
