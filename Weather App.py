@@ -45,6 +45,22 @@ def temp_low(city):
     return int(low_f)
 
 
+def get_location(city):
+    # Gets City Label for a given city
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=6d85d3bf2552548ce1a6d7930c5a3048&units=metric"
+    data = requests.get(url).json()
+    city_2 = data["name"]
+    return city_2
+
+
+def get_country(city):
+    # Gets Country for a given city
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=6d85d3bf2552548ce1a6d7930c5a3048&units=metric"
+    data = requests.get(url).json()
+    country = data["sys"]["country"]
+    return country
+
+
 def update_weather():
     # Executes all the functions and updates results
     city = city_entry.get()
@@ -52,6 +68,8 @@ def update_weather():
     temp_label.config(text=f"{get_weather(city)}°F")
     high_data_label.config(text=f"{temp_high(city)}°F")
     low_data_label.config(text=f"{temp_low(city)}°F")
+    city_data_2_label.config(text=f"{get_location(city)}")
+    country_data_label.config(text=f"{get_country(city)}")
 
 
 city_label = tk.Label(root, text="Enter City:", font=("Arial", 13))
@@ -83,6 +101,18 @@ low_label.place(x=100, y=88)
 
 low_data_label = tk.Label(root, text="", font=("Arial", 13))
 low_data_label.place(x=140, y=89)
+
+city_label_2 = tk.Label(root, text="City:", font=("Arial", 13))
+city_label_2.place(x=0, y=130)
+
+city_data_2_label = tk.Label(root, text="", font=("Arial", 13))
+city_data_2_label.place(x=140, y=142.5, anchor="e")
+
+country_label = tk.Label(root, text="Country:", font=("Arial", 13))
+country_label.place(x=0, y=160)
+
+country_data_label = tk.Label(root, text="", font=("Arial", 13))
+country_data_label.place(x=100, y=172.5, anchor="e")
 
 button = tk.Button(root, text="Get Weather", command=update_weather)
 button.place(x=140, y=160)
