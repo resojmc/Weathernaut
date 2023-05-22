@@ -76,55 +76,43 @@ def get_icon(city):
 
 def update_weather():
     # Executes all the functions and updates results
-    city = city_entry.get()
+    city = city_entry.get().capitalize()
+    city_label.config(text=f"{city}", font=("Arial", 13))
     desc_label.config(text=f"{weather_desc(city)}")
-    temp_label.config(text=f"{get_weather(city)}°F")
-    high_data_label.config(text=f"{temp_high(city)}°F")
-    low_data_label.config(text=f"{temp_low(city)}°F")
-    country_data_label.config(text=f"{get_country(city)}")
+    temp_label.config(text=f"{get_weather(city)}°")
+    high_data_label.config(text=f"H:{temp_high(city)}°")
+    low_data_label.config(text=f"L:{temp_low(city)}°")
     icon = get_icon(city)
     icon_label.config(image=icon)
     icon_label.image = icon
 
 
-city_label = tk.Label(root, text="Enter City:", font=("Arial", 13))
-city_label.place(x=0, y=2)
+city_label = tk.Label(root, text="", font=("Arial", 13))
+city_label.place(x=150, y=15, anchor="center")
 
 city_entry = tk.Entry(root, )
-city_entry.place(x=160, y=4.5, width=76.5)
+city_entry.place(x=220, y=445, width=76.5)
 
 button = tk.Button(root, text="Get Weather", command=update_weather)
-button.place(x=160, y=160)
-
-description_label = tk.Label(root, text="Current Status:", font=("Arial", 13))
-description_label.place(x=0, y=30)
+button.place(x=220, y=470)
 
 desc_label = tk.Label(root, text="", font=("Arial", 13))
-desc_label.place(x=112, y=42, anchor="w")
+desc_label.place(x=150, y=85, anchor="center")
 
-temperature_label = tk.Label(
-    root, text="Temperature:", font=("Arial", 13)).place(x=0, y=59)
+temp_label = tk.Label(root, text="", font=("Arial", 30))
+temp_label.place(x=150, y=50, anchor="center")
 
-temp_label = tk.Label(root, text="", font=("Arial", 13))
-temp_label.place(x=140, y=60)
-
-high_label = tk.Label(root, text="High:", font=("Arial", 13))
-high_label.place(x=0, y=88)
+high_label = tk.Label(root, text="", font=("Arial", 13))
+high_label.place(x=125, y=110, anchor="center")
 
 high_data_label = tk.Label(root, text="", font=("Arial", 13))
-high_data_label.place(x=45, y=89)
+high_data_label.place(x=125, y=110, anchor="center")
 
-low_label = tk.Label(root, text="Low:", font=("Arial", 13))
-low_label.place(x=100, y=88)
+low_label = tk.Label(root, text="", font=("Arial", 13))
+low_label.place(x=175, y=110, anchor="center")
 
 low_data_label = tk.Label(root, text="", font=("Arial", 13))
-low_data_label.place(x=140, y=89)
-
-country_label = tk.Label(root, text="Country:", font=("Arial", 13))
-country_label.place(x=0, y=120)
-
-country_data_label = tk.Label(root, text="", font=("Arial", 13))
-country_data_label.place(x=70, y=120)
+low_data_label.place(x=175, y=110, anchor="center")
 
 icon_label = tk.Label(root, )
 icon_label.place(x=120, y=200)
