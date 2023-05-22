@@ -3,12 +3,11 @@ import tkinter as tk
 import requests
 from PIL import ImageTk, Image
 import urllib.request
+import socket
 
-# Initializes main window
+# Main window properties
 root = tk.Tk()
-
-# Title and window dimensions
-root.geometry("250x200")
+root.geometry("300x500")
 root.title("Weather")
 root.resizable(False, False)
 
@@ -68,7 +67,9 @@ def get_icon(city):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=6d85d3bf2552548ce1a6d7930c5a3048&units=metric"
     data = requests.get(url).json()
     icon_url = f"https://openweathermap.org/img/wn/{data['weather'][0]['icon']}@2x.png"
-    urllib.request.urlretrieve(icon_url, "icon.png")
+    response = requests.get(icon_url)
+    with open("icon.png", "wb") as f:
+        f.write(response.content)
     icon = ImageTk.PhotoImage(Image.open("icon.png"))
     return icon
 
@@ -81,7 +82,9 @@ def update_weather():
     high_data_label.config(text=f"{temp_high(city)}°F")
     low_data_label.config(text=f"{temp_low(city)}°F")
     country_data_label.config(text=f"{get_country(city)}")
-    icon_label.config(image=get_icon(city), width=50, height=50)
+    icon = get_icon(city)
+    icon_label.config(image=icon)
+    icon_label.image = icon
 
 
 city_label = tk.Label(root, text="Enter City:", font=("Arial", 13))
@@ -124,6 +127,6 @@ country_data_label = tk.Label(root, text="", font=("Arial", 13))
 country_data_label.place(x=70, y=120)
 
 icon_label = tk.Label(root, )
-icon_label.place(x=120, y=110)
+icon_label.place(x=120, y=200)
 
 root.mainloop()
