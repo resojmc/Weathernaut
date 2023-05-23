@@ -10,6 +10,9 @@ root = tk.Tk()
 root.geometry("300x500")
 root.title("Weather")
 root.resizable(False, False)
+root.configure(bg="#87b1de")
+root.iconphoto(True, ImageTk.PhotoImage(
+    Image.open("weather-application\images\icon.png")))
 
 
 def get_weather(city):
@@ -87,7 +90,7 @@ def update_weather():
     icon_label.image = icon
 
 
-city_label = tk.Label(root, text="", font=("Arial", 13))
+city_label = tk.Label(root, text="", font=("Arial", 13), bg="#87b1de")
 city_label.place(x=150, y=15, anchor="center")
 
 city_entry = tk.Entry(root, )
@@ -96,25 +99,25 @@ city_entry.place(x=220, y=445, width=76.5)
 button = tk.Button(root, text="Get Weather", command=update_weather)
 button.place(x=220, y=470)
 
-desc_label = tk.Label(root, text="", font=("Arial", 13))
+desc_label = tk.Label(root, text="", font=("Arial", 13), bg="#87b1de")
 desc_label.place(x=150, y=85, anchor="center")
 
-temp_label = tk.Label(root, text="", font=("Arial", 30))
+temp_label = tk.Label(root, text="", font=("Arial", 30), bg="#87b1de")
 temp_label.place(x=150, y=50, anchor="center")
 
-high_label = tk.Label(root, text="", font=("Arial", 13))
+high_label = tk.Label(root, text="", font=("Arial", 13), bg="#87b1de")
 high_label.place(x=125, y=110, anchor="center")
 
-high_data_label = tk.Label(root, text="", font=("Arial", 13))
+high_data_label = tk.Label(root, text="", font=("Arial", 13), bg="#87b1de")
 high_data_label.place(x=125, y=110, anchor="center")
 
-low_label = tk.Label(root, text="", font=("Arial", 13))
+low_label = tk.Label(root, text="", font=("Arial", 13), bg="#87b1de")
 low_label.place(x=175, y=110, anchor="center")
 
-low_data_label = tk.Label(root, text="", font=("Arial", 13))
+low_data_label = tk.Label(root, text="", font=("Arial", 13), bg="#87b1de")
 low_data_label.place(x=175, y=110, anchor="center")
 
-icon_label = tk.Label(root, )
-icon_label.place(x=120, y=200)
+icon_label = tk.Label(root, bg="#87b1de")
+icon_label.place(x=150, y=170, anchor="center")
 
 root.mainloop()
