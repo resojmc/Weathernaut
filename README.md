@@ -1,2 +1,2 @@
 # Weathernaut
-A very simple weather application written in python using the tkinter interface.
+A simple weather application written in python using the tkinter interface.
